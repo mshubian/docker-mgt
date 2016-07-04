@@ -88,3 +88,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+# frontend ignore
+.site-frontend/node_modules/*
