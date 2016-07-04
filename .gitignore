@@ -92,3 +92,4 @@ ENV/
 
 # frontend ignore
 .site-frontend/node_modules/*
+.site-frontend/bower_components/*

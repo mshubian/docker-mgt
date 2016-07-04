@@ -40,7 +40,7 @@
 			    	<input type="password" class="form-control" id="login-password" name="password" placeholder="Password">
 			  	</fieldset>
 
-			  	<button class="btn btn-lg btn-warning">cancel</button>
+			  	<button class="btn btn-lg btn-warning" onclick="test_ajax()">cancel</button>
 			  	<button class="btn btn-lg btn-primary" onclick="login_func()">login</button>
 			</div>
 		</div>
@@ -73,5 +73,30 @@
 			});
 		};
 	</script>
+
+	<script type="text/javascript" language="javascript">
+		function test_ajax(){
+			var test_url = "http://localhost:8088/api/hosts";
+			$.ajax({
+			  	url: test_url,
+			  	type: "GET",
+			  	contentType: "application/json",
+			  	// data: JSON.stringify({
+			   //  	"login": login,
+			   //  	"password": password
+			  	// }),
+			  	success: function(datalist){
+			  		alert(datalist[0]);
+			  		return false;
+			  	},
+			  	error: function(data){
+			  		console.log(data);
+					console.log("=================error=============================");
+			  	},
+			});
+		};
+	</script>
+
+
 
 </html>

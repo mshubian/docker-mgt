@@ -6,6 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html"/>
 	<link href="../css/tablecloth.css" rel="stylesheet" type="text/css" media="screen" />
 	<script type="text/javascript" src="../js/tablecloth.js"></script>
+	<script src="../js/jquery.min.js"></script>
 </head>
 <body>
 
@@ -29,47 +30,47 @@
 		</table>
 	</div>
 
-
-	<script type="text/javascript" language="javascript">
-		function insert_data_to_host_table(data){
-			$.ajax({
-			  	url: "http://localhost:8088/api/hosts",
-			  	type: "GET",
-			  	contentType: "application/json",
-			  	success: function(data){
-			  		for (i=0; i<data.length; i++){
-			  			table = $("#host_table");
-			  			columns = "<tr>"				
-										+"<th>"+data[i].hostname+"</th>"
-										+"<th>"+data[i].public_ip+"</th>"
-										+"<th>"+data[i].status+"</th>"
-										+"<th>"+data[i].cpu_cores+":"+data[i].cpu_speed+"</th>"
-										+"<th>"+data[i].memory_gb+"</th>"
-										+"<th>"+data[i].disk+"</th>"
-										+"<th>"+data[i].remarks+"</th>"
-										+"<th>"+" time "+"</th>"
-										+"<th>"+" power "+"</th>"
-									+"</tr>";
-			  			table.append(columns);
-			  		}
-			  	},
-			  	error: function(data){
-			  		console.log(data);
-					console.log("=================error=============================");
-			  	},
-			});
-		};
-	</script>
-
-
-
-
-
-
-
 </body>
 
 
+<script type="text/javascript" language="javascript">
+	function insert_data_to_host_table(){
+		alert("------------------------------------");
+		console.log("---------------------------");
+		$.ajax({
+		  	url: "http://localhost:8088/api/hosts",
+		  	type: "GET",
+		  	contentType: "application/json",
+		  	success: function(data){
+		  		console.log(data);
+		  		alert(data);
+		  		for (i=0; i<data.length; i++){
+		  			table = $("#host_table");
+		  			columns = "<tr>"				
+									+"<th>"+data[i].hostname+"</th>"
+									+"<th>"+data[i].public_ip+"</th>"
+									+"<th>"+data[i].status+"</th>"
+									+"<th>"+data[i].cpu_cores+":"+data[i].cpu_speed+"</th>"
+									+"<th>"+data[i].memory_gb+"</th>"
+									+"<th>"+data[i].disk+"</th>"
+									+"<th>"+data[i].remarks+"</th>"
+									+"<th>"+" time "+"</th>"
+									+"<th>"+" power "+"</th>"
+								+"</tr>";
+		  			table.append(columns);
+		  		}
+		  	},
+		  	error: function(data){
+		  		console.log(data);
+				console.log("=================error=============================");
+		  	},
+		});
+	};
+	insert_data_to_host_table();
+</script>
+
+
+	
 
 
 </html>
