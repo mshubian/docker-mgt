@@ -1,0 +1,22 @@
+body{
+	background:url("../statics/login/login_bg.jpg");
+	background-size: cover;
+}
+
+
+#login-div{
+	margin-top: 300px;
+	margin-left: 700px;
+	width: 500px;
+	height: 400px;
+}
+
+#login-panel-body{
+	opacity: 0.8;
+}
+
+
+#login-form-css{
+	text-align: center;
+}
+

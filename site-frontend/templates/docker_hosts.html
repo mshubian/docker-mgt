@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DockerHostResources</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html"/>
+	<link href="../css/tablecloth.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" src="../js/tablecloth.js"></script>
+</head>
+<body>
+
+	<div>
+		<font color="white" size="12">DockerHost Resources Summary</font> 
+	</div>
+	
+	<div>
+		<table id="host_table" cellspacing="0" cellpadding="0">			
+			<tr>				
+				<th>Hostname</th>
+				<th>Ipaddress</th>
+				<th>Status</th>
+				<th>CPU</th>
+				<th>Memory</th>
+				<th>Disk</th>
+				<th>Remarks</th>
+				<th>CreateTime</th>
+				<th>Operations</th>
+			</tr>					
+		</table>
+	</div>
+
+
+	<script type="text/javascript" language="javascript">
+		function insert_data_to_host_table(data){
+			$.ajax({
+			  	url: "http://localhost:8088/api/hosts",
+			  	type: "GET",
+			  	contentType: "application/json",
+			  	success: function(data){
+			  		for (i=0; i<data.length; i++){
+			  			table = $("#host_table");
+			  			columns = "<tr>"				
+										+"<th>"+data[i].hostname+"</th>"
+										+"<th>"+data[i].public_ip+"</th>"
+										+"<th>"+data[i].status+"</th>"
+										+"<th>"+data[i].cpu_cores+":"+data[i].cpu_speed+"</th>"
+										+"<th>"+data[i].memory_gb+"</th>"
+										+"<th>"+data[i].disk+"</th>"
+										+"<th>"+data[i].remarks+"</th>"
+										+"<th>"+" time "+"</th>"
+										+"<th>"+" power "+"</th>"
+									+"</tr>";
+			  			table.append(columns);
+			  		}
+			  	},
+			  	error: function(data){
+			  		console.log(data);
+					console.log("=================error=============================");
+			  	},
+			});
+		};
+	</script>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+</html>

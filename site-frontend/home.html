@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type='text/css' />
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<meta name="viewport" content="width=device-width" initial-scale="1">
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+	<meta name="keywords" content="Hubian leaner" />
+
+	<!--webfont-->
+	<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/clndr.css" type="text/css" />
+	<link href="css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="css/third-part.css" rel="stylesheet" type="text/css" media="all"/>
+
+	<script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<div class="total-content">
+		<div class="col-md-3 side-bar">
+			<div class="logo text-center">
+				<a href="#"><img src="images/logo.png" alt="" /></a>
+			</div>
+			<div class="navigation">
+				<h3>DockerManagement</h3>
+				<ul>
+					<li><a href="#"><i class="dash"></i></a></li>
+					<li><a href="#" onclick="manu_select('DockerHosts')">Hosts</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="mail"></i></a></li>
+					<li><a href="#" onclick="manu_select('DockerContainers')">Containers</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="cal"></i></a></li>
+					<li><a href="#" onclick="manu_select('DockerImages')">Images</a></li>
+				</ul>
+			</div>
+			<div class="navigation">
+				<h3>UserManagement</h3>
+				<ul>
+					<li><a href="#"><i class="chat"></i></a></li>
+					<li><a href="#">Groups</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="art"></i></a></li>
+					<li><a href="#">Roles</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="art"></i></a></li>
+					<li><a href="#">Security</a></li>
+				</ul>				
+
+			</div>
+			<div class="navigation">
+				<h3>SystemManagement</h3>
+				<ul>
+					<li><a href="#"><i class="rev"></i></a></li>
+					<li><a href="#">Sysconfig</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="pic"></i></a></li>
+					<li><a href="#">Licenses</a></li>
+				</ul>
+				<ul>
+					<li><a href="#"><i class="faq"></i></a></li>
+					<li><a href="#">Help</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="col-md-9 content">
+			<iframe id="content_frame" charset="utf-8" name="content_frame" width="1350px" height="850px" frameborder="no" border="0" scrolling="no"></iframe>
+		</div>
+
+	</div>
+</body>
+
+
+
+<script type="text/javascript" language="javascript">
+	function manu_select(manu_select_value){
+		var frame = document.getElementById('content_frame');
+		switch(manu_select_value){
+			case "DockerHosts": 
+				frame.src = "templates/docker_hosts.html";
+				break;
+			case "DockerContainers":
+				frame.src = "templates/docker_containers.html";
+				break;
+			case "DockerImages":
+				frame.src = "templates/docker_images.html";
+				break;
+			case "":
+				break;
+		};
+
+		$.ajax({
+		  	url: "http://localhost:8088/api/hosts",
+		  	type: "GET",
+		  	crossDomain: true,
+		  	success: function(result) {
+			    console.log(typeof(eval('(' + result + ')')));
+		  	}
+		});
+
+	};
+</script>
+
+
+
+
+</html>
